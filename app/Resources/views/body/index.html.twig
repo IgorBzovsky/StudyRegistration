@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bodies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for body in bodies %}
+            <tr>
+                <td><a href="{{ path('body_show', { 'id': body.id }) }}">{{ body.id }}</a></td>
+                <td>{{ body.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('body_show', { 'id': body.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('body_edit', { 'id': body.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('body_new') }}">Create a new body</a>
+        </li>
+    </ul>
+{% endblock %}
