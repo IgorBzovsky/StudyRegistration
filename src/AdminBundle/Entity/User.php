@@ -2,6 +2,8 @@
 
 namespace AdminBundle\Entity;
 
+use AutoBundle\Entity\Car;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,11 +23,19 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var ArrayCollection|Car
+     *
+     * @ORM\OneToMany(targetEntity="AutoBundle\Entity\Car", mappedBy="createdBy")
+     */
+    private $cars;
+
     public function __construct()
     {
         parent::__construct();
+        $this->cars = new ArrayCollection();
     }
-
 
     /**
      * Get id

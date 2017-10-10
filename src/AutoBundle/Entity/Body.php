@@ -2,6 +2,7 @@
 
 namespace AutoBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,16 @@ class Body
      */
     private $name;
 
+    /**
+     * @var ArrayCollection|Car
+     *
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="body")
+     */
+    private $cars;
+
+    public function __construct() {
+        $this->cars = new ArrayCollection();
+    }
 
     /**
      * Get id

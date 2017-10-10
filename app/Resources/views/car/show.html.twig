@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Car</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ car.id }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{% if car.year %}{{ car.year|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isactive</th>
+                <td>{% if car.isActive %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if car.createdAt %}{{ car.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if car.updatedAt %}{{ car.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('car_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('car_edit', { 'id': car.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

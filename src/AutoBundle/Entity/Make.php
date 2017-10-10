@@ -30,14 +30,22 @@ class Make
     private $name;
 
     /**
-     * @var ArrayCollection
+     * @var ArrayCollection|Model
      *
      * @ORM\OneToMany(targetEntity="Model", mappedBy="make")
      */
     private $models;
 
+    /**
+     * @var ArrayCollection|Car
+     *
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="make")
+     */
+    private $cars;
+
     public function __construct() {
         $this->models = new ArrayCollection();
+        $this->cars = new ArrayCollection();
     }
 
     /**

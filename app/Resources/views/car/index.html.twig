@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cars list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Year</th>
+                <th>Isactive</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td><a href="{{ path('car_show', { 'id': car.id }) }}">{{ car.id }}</a></td>
+                <td>{% if car.year %}{{ car.year|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if car.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{% if car.createdAt %}{{ car.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if car.updatedAt %}{{ car.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('car_show', { 'id': car.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('car_edit', { 'id': car.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('car_new') }}">Create a new car</a>
+        </li>
+    </ul>
+{% endblock %}
