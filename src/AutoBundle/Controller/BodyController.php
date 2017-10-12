@@ -48,7 +48,7 @@ class BodyController extends Controller
             $em->persist($body);
             $em->flush();
 
-            return $this->redirectToRoute('body_show', array('id' => $body->getId()));
+            return $this->redirectToRoute('body_index', array('id' => $body->getId()));
         }
 
         return $this->render('body/new.html.twig', array(
@@ -88,7 +88,7 @@ class BodyController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('body_edit', array('id' => $body->getId()));
+            return $this->redirectToRoute('body_index', array('id' => $body->getId()));
         }
 
         return $this->render('body/edit.html.twig', array(

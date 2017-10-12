@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Auto Market Adverts</h1>
+    <h1>My Adverts</h1>
     {% for car in cars %}
         <div>
             <h3>{{ car.make }}</h3>
             <p>{{ car.model }}</p>
             <p>{{ car.body }}</p>
             <p>{% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
-            <p><a href="{{ path('car_show', { 'id': car.id }) }}">Show details</a></p>
+            <p><a href="{{ path('car_detailed', { 'id': car.id }) }}">Show details</a></p>
         </div>
     {% endfor %}
 {% endblock %}

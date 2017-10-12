@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Car controller.
  *
- * @Route("car")
+ *
  */
 class CarController extends Controller
 {
@@ -33,9 +33,26 @@ class CarController extends Controller
     }
 
     /**
+     * Lists all car entities.
+     *
+     * @Route("car/index", name="user_car_index")
+     * @Method("GET")
+     */
+    public function indexUserAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cars = $em->getRepository('AutoBundle:Car')->findBy(array('createdBy'=>$this->getUser()));
+
+        return $this->render('car/usercars.html.twig', array(
+            'cars' => $cars,
+        ));
+    }
+
+    /**
      * Creates a new car entity.
      *
-     * @Route("/new", name="car_new")
+     * @Route("car/new", name="car_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -65,7 +82,7 @@ class CarController extends Controller
     /**
      * Finds and displays a car entity.
      *
-     * @Route("/{id}", name="car_show")
+     * @Route("car/{id}", name="car_show")
      * @Method("GET")
      */
     public function showAction(Car $car)
@@ -73,6 +90,21 @@ class CarController extends Controller
         $deleteForm = $this->createDeleteForm($car);
 
         return $this->render('car/show.html.twig', array(
+            'car' => $car
+        ));
+    }
+
+    /**
+     * Finds and displays a car entity.
+     *
+     * @Route("car/detailed/{id}", name="car_detailed")
+     * @Method("GET")
+     */
+    public function detailedAction(Car $car)
+    {
+        $deleteForm = $this->createDeleteForm($car);
+
+        return $this->render('car/detailed.html.twig', array(
             'car' => $car,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -81,7 +113,7 @@ class CarController extends Controller
     /**
      * Displays a form to edit an existing car entity.
      *
-     * @Route("/{id}/edit", name="car_edit")
+     * @Route("car/{id}/edit", name="car_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Car $car)
@@ -93,7 +125,7 @@ class CarController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('car_edit', array('id' => $car->getId()));
+            return $this->redirectToRoute('user_car_index');
         }
 
         return $this->render('car/edit.html.twig', array(
@@ -106,7 +138,7 @@ class CarController extends Controller
     /**
      * Deletes a car entity.
      *
-     * @Route("/{id}", name="car_delete")
+     * @Route("car/{id}", name="car_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Car $car)

@@ -48,7 +48,7 @@ class MakeController extends Controller
             $em->persist($make);
             $em->flush();
 
-            return $this->redirectToRoute('make_show', array('id' => $make->getId()));
+            return $this->redirectToRoute('make_index', array('id' => $make->getId()));
         }
 
         return $this->render('make/new.html.twig', array(
@@ -88,7 +88,7 @@ class MakeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('make_edit', array('id' => $make->getId()));
+            return $this->redirectToRoute('make_index');
         }
 
         return $this->render('make/edit.html.twig', array(

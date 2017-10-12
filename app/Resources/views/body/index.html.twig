@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Bodies list</h1>
-
-    <table>
+    <h1>List of Bodies</h1>
+    <div class="form-panel">
+        <a href="{{ path('body_new') }}" class="btn btn-primary">Create a new body</a>
+    </div>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,26 +16,15 @@
         <tbody>
         {% for body in bodies %}
             <tr>
-                <td><a href="{{ path('body_show', { 'id': body.id }) }}">{{ body.id }}</a></td>
+                <td>{{ body.id }}</td>
                 <td>{{ body.name }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('body_show', { 'id': body.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('body_edit', { 'id': body.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('body_edit', { 'id': body.id }) }}" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-pencil"></i><span class="button-alias">Edit</span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('body_new') }}">Create a new body</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -48,7 +48,7 @@ class ModelController extends Controller
             $em->persist($model);
             $em->flush();
 
-            return $this->redirectToRoute('model_show', array('id' => $model->getId()));
+            return $this->redirectToRoute('model_index', array('id' => $model->getId()));
         }
 
         return $this->render('model/new.html.twig', array(
@@ -88,7 +88,7 @@ class ModelController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('model_edit', array('id' => $model->getId()));
+            return $this->redirectToRoute('model_index', array('id' => $model->getId()));
         }
 
         return $this->render('model/edit.html.twig', array(

@@ -3,8 +3,12 @@
 {% block body %}
     <h1>Advertisement details</h1>
     <div class="form-panel">
-        <a href="{{ path('car_index') }}" class="btn btn-default">
+        <a href="{{ path('user_car_index') }}" class="btn btn-default">
             <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+        <a href="{{ path('car_edit', { 'id': car.id }) }}" class="btn btn-warning">
+            <i class="glyphicon glyphicon-pencil"></i>
+            <span class="button-alias">Edit</span>
         </a>
     </div>
     <table class="table">
@@ -29,14 +33,13 @@
                 <th>Update date</th>
                 <td>{% if car.updatedAt %}{{ car.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
-            <tr>
-                <th>Owner</th>
-                <td>{{ car.createdBy.username }}</td>
-            </tr>
-            <tr>
-                <th>Owner email</th>
-                <td>{{ car.createdBy.email }}</td>
-            </tr>
         </tbody>
     </table>
+
+    {{ form_start(delete_form) }}
+    <button type="submit" class="btn btn-danger">
+        <i class="glyphicon glyphicon-trash"></i>
+        <span class="button-alias">Delete</span>
+    </button>
+    {{ form_end(delete_form) }}
 {% endblock %}
