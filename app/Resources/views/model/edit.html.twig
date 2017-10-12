@@ -1,21 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Model edit</h1>
-
-    {{ form_start(edit_form) }}
+    <div class="col-md-4">
+        <h1>Edit Model</h1>
+        <div class="form-panel">
+            <a href="{{ path('model_index') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+            </a>
+        </div>
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('model_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <button type="submit" class="btn btn-primary">Save</button>
+        {{ form_end(edit_form) }}
+    </div>
 {% endblock %}

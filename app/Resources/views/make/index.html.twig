@@ -1,39 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Makes list</h1>
+    <h1>List of Makers</h1>
+    <div class="form-panel">
+        <a href="{{ path('make_new') }}" class="btn btn-primary">Create a new make</a>
+    </div>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Actions</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for make in makes %}
             <tr>
-                <td><a href="{{ path('make_show', { 'id': make.id }) }}">{{ make.id }}</a></td>
+                <td>{{ make.id }}</td>
                 <td>{{ make.name }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('make_show', { 'id': make.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('make_edit', { 'id': make.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('make_edit', { 'id': make.id }) }}" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-pencil"></i><span class="button-alias">Edit</span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('make_new') }}">Create a new make</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Car creation</h1>
-
-    {{ form_start(form) }}
+    <div class="col-md-4">
+        <h1>Create advert</h1>
+        <div class="form-panel">
+            <a href="{{ path('car_index') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+            </a>
+        </div>
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('car_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <button type="submit" class="btn btn-primary">Create</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 

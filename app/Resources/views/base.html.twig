@@ -5,6 +5,7 @@
         <title>{% block title %}AutoMarket{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href={{asset('css/style.css')}}>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -25,6 +26,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path('car_new') }}">Advert</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Panel<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('make_index') }}">Edit makes</a></li>
+                                <li><a href="{{ path('model_index') }}">Edit models</a></li>
+                                <li><a href="{{ path('body_index') }}">Edit bodies</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -40,7 +51,9 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-        {% block body %}{% endblock %}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
         <script src={{asset('vendor/jquery/jquery-3.2.1.min.js')}}></script>
         <script src={{asset('vendor/bootstrap/js/bootstrap.min.js')}}></script>
         {% block javascripts %}

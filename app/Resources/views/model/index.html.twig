@@ -1,39 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Models list</h1>
+    <h1>List of Models</h1>
+    <div class="form-panel">
+        <a href="{{ path('model_new') }}" class="btn btn-primary">Create a new model</a>
+    </div>
 
-    <table>
+    <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Make</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
         </thead>
         <tbody>
         {% for model in models %}
             <tr>
-                <td><a href="{{ path('model_show', { 'id': model.id }) }}">{{ model.id }}</a></td>
+                <td>{{ model.id }}</td>
+                <td>{{ model.make.name }}</td>
                 <td>{{ model.name }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('model_show', { 'id': model.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('model_edit', { 'id': model.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('model_edit', { 'id': model.id }) }}" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-pencil"></i><span class="button-alias">Edit</span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('model_new') }}">Create a new model</a>
-        </li>
-    </ul>
 {% endblock %}
