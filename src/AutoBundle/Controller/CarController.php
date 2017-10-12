@@ -6,6 +6,7 @@ use AutoBundle\Entity\Car;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Car controller.
@@ -44,6 +45,10 @@ class CarController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $car->setIsActive(true);
+            $car->setCreatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
+            $car->setUpdatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
+            $car->setCreatedBy($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($car);
             $em->flush();
