@@ -13,5 +13,20 @@
             <button type="submit" class="btn btn-primary">Save</button>
         {{ form_end(edit_form) }}
     </div>
-
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".js-datepicker").datepicker({
+                format: " yyyy", // Notice the Extra space at the beginning
+                viewMode: "years",
+                minViewMode: "years",
+                endDate: "+0d",
+                startDate: '-30y',
+                autoclose: true
+            });
+        });
+    </script>
 {% endblock %}

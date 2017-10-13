@@ -123,6 +123,7 @@ class CarController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $car->setUpdatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_car_index');

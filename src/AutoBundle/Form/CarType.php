@@ -16,7 +16,12 @@ class CarType extends AbstractType
     {
         //$builder->add('year')->add('isActive')->add('createdAt')->add('updatedAt')->add('make')->add('model')->add('body')->add('createdBy');
         $builder->add('year', \Symfony\Component\Form\Extension\Core\Type\DateType::class,
-            array('widget' => 'single_text'))->add('make')->add('model')->add('body');
+            [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+                'html5' => false,
+                'format' => 'yyyy'
+            ])->add('make')->add('model')->add('body');
     }
     
     /**
