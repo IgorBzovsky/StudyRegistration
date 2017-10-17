@@ -2,40 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec7b0a31-85e1-4b24-b0ca-9330fbb45741" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/body/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/body/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/body/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/body/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/body/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/body/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/body/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/body/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/detailed.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/detailed.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/make/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/make/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/make/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/make/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/make/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/make/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/make/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/make/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/model/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/model/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/model/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/model/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/model/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/model/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/model/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/model/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Controller/CarController.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Controller/CarController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Controller/ModelController.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Controller/ModelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Entity/Body.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Entity/Body.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Entity/Car.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Entity/Car.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Entity/Make.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Entity/Make.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Entity/Model.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Entity/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Form/CarType.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Form/CarType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Form/ModelType.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Form/ModelType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoBundle/Repository/CarRepository.php" afterPath="$PROJECT_DIR$/src/AutoBundle/Repository/CarRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,28 +39,28 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/car/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="8" column="96" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="96" />
+            <state relative-caret-position="283">
+              <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
-              <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+              <caret line="70" column="71" lean-forward="false" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usercars.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="usercars.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+            <state relative-caret-position="323">
+              <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -169,8 +137,8 @@
         <option value="$PROJECT_DIR$/src/AutoBundle/Controller/CarController.php" />
         <option value="$PROJECT_DIR$/src/AutoBundle/Repository/CarRepository.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/car/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig" />
       </list>
     </option>
   </component>
@@ -549,12 +517,12 @@
       <workItem from="1507667575776" duration="5454000" />
       <workItem from="1507792170074" duration="17494000" />
       <workItem from="1507821331081" duration="8893000" />
-      <workItem from="1508175405652" duration="16694000" />
+      <workItem from="1508175405652" duration="17823000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95786000" />
+    <option name="totallyTimeSpent" value="96915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -967,16 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/car/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="8" column="96" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+        <state relative-caret-position="283">
+          <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -984,7 +944,15 @@
     <entry file="file://$PROJECT_DIR$/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+          <caret line="70" column="71" lean-forward="false" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/car/usercars.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding />
         </state>
       </provider>

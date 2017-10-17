@@ -17,7 +17,7 @@
                             <p><span class="advert-title">Description:</span> {{ car.description|truncate(100, true) }}</p>
                         {% endif %}
                         <p><a href="{{ path('car_detailed', { 'id': car.id }) }}" class="btn btn-info">Show details</a></p>
-                        <div class="advert-price">$ {{ car.price|number_format(2) }}</div>
+                        <div class="price red">$ {{ car.price|number_format(2) }}</div>
                     </div>
                 </div>
             {% endfor %}

@@ -15,7 +15,7 @@
                         {% endif %}
                         <p><a href="{{ path('car_show', { 'id': car.id }) }}" class="btn btn-info"
                               {% if car.isActive == false %}disabled="disabled"{% endif %}>Show details</a></p>
-                        <div class="advert-price">$ {{ car.price|number_format(2) }}</div>
+                        <div class="price red">$ {{ car.price|number_format(2) }}</div>
                     </div>
                 </div>
             {% endfor %}
