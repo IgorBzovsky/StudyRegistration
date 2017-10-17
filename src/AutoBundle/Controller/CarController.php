@@ -19,7 +19,7 @@ class CarController extends Controller
     /**
      * Lists all car entities.
      *
-     * @Route("/{page}", name="car_index")
+     * @Route("/{page}", name="car_index", requirements={"page": "\d+"})
      * @param integer $page
      * @Method("GET")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -75,7 +75,6 @@ class CarController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $car->setIsActive(true);
             $car->setCreatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
             $car->setUpdatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
             $car->setCreatedBy($this->getUser());

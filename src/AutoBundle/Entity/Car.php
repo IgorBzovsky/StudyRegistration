@@ -88,14 +88,14 @@ class Car
     private $createdBy;
 
     /**
-     * @ORM\Column(type="decimal", precision=7, scale=2)
+     * @ORM\Column(type="decimal")
      */
     private $price = 0;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500, nullable=true)
+     * @ORM\Column(name="description", type="string", length=1024, nullable=true)
      */
     private $description;
 
@@ -328,7 +328,7 @@ class Car
     /**
      * Set name
      *
-     * @param string $price
+     * @param float $price
      *
      * @return Car
      */
@@ -342,7 +342,7 @@ class Car
     /**
      * Get price
      *
-     * @return string
+     * @return float
      */
     public function getPrice()
     {

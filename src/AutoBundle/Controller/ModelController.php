@@ -12,13 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Model controller.
  *
+ *  @Route("admin/model")
  */
 class ModelController extends Controller
 {
     /**
      * Lists all model entities.
      *
-     * @Route("admin/model", name="model_index")
+     * @Route("/", name="model_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -35,7 +36,7 @@ class ModelController extends Controller
     /**
      * Creates a new model entity.
      *
-     * @Route("admin/model/new", name="model_new")
+     * @Route("/new", name="model_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -61,7 +62,7 @@ class ModelController extends Controller
     /**
      * Finds and displays a model entity.
      *
-     * @Route("admin/model/{id}", name="model_show")
+     * @Route("/{id}", name="model_show")
      * @Method("GET")
      */
     public function showAction(Model $model)
@@ -77,7 +78,7 @@ class ModelController extends Controller
     /**
      * Displays a form to edit an existing model entity.
      *
-     * @Route("admin/model/{id}/edit", name="model_edit")
+     * @Route("/{id}/edit", name="model_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Model $model)
@@ -102,7 +103,7 @@ class ModelController extends Controller
     /**
      * Deletes a model entity.
      *
-     * @Route("admin/model/{id}", name="model_delete")
+     * @Route("/{id}", name="model_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Model $model)
@@ -117,27 +118,6 @@ class ModelController extends Controller
         }
 
         return $this->redirectToRoute('model_index');
-    }
-
-    /**
-     *
-     * @Route("getmodels/{id}", name="getmodels")
-     */
-    public function getModelsAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $models = $em->getRepository("AutoBundle:Model")->findBy(["make" => $id]);
-
-        $modelDtoArray = [];
-        foreach ($models as $model){
-            $modelDto = [
-                'id' => $model->getId(),
-                'name' => $model->getName()
-            ];
-            array_push($modelDtoArray, $modelDto);
-        }
-
-        return new JsonResponse($modelDtoArray);
     }
 
     /**
