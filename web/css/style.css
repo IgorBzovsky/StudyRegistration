@@ -1,3 +1,6 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
 .inline{
     display: inline;
 }
@@ -69,3 +72,13 @@
 }
 .price.red {background:#ff3333;}
 .price.red:after {border-top-color:#ff3333; border-bottom-color:#ff3333;}
+
+.title-red{
+    color: #ff3333;
+}
+.title-blue{
+    color: #8080ff;
+}
+.title-gray{
+    color: #484848;
+}

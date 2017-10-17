@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header">My Adverts</h1>
+    <h1 class="page-header">My adverts</h1>
     {% for row in cars|batch(3) %}
         <div class="row">
             {% for car in row %}
