@@ -8,13 +8,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Body
+ * Model
  *
- * @UniqueEntity("name")
- * @ORM\Table(name="body")
- * @ORM\Entity(repositoryClass="AutoBundle\Repository\BodyRepository")
+ * @UniqueEntity(
+ *   fields={"name", "make"},
+ *   errorPath="name",
+ *   message="This model of make already exists."
+ * )
+ * @ORM\Table(name="model")
+ * @ORM\Entity(repositoryClass="AutoBundle\Repository\ModelRepository")
  */
-class Body
+class Model
 {
     /**
      * @var int
@@ -29,14 +33,23 @@ class Body
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="name", type="string", length=50, unique=true)
+     * @ORM\Column(name="name", type="string", length=128)
      */
     private $name;
 
     /**
+     * @var Make
+     *
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="Make", inversedBy="models")
+     * @ORM\JoinColumn(name="make_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     */
+    private $make;
+
+    /**
      * @var ArrayCollection|Car
      *
-     * @ORM\OneToMany(targetEntity="Car", mappedBy="body")
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="model")
      */
     private $cars;
 
@@ -59,7 +72,7 @@ class Body
      *
      * @param string $name
      *
-     * @return Body
+     * @return Model
      */
     public function setName($name)
     {
@@ -78,42 +91,33 @@ class Body
         return $this->name;
     }
 
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
     /**
-     * Add car
+     * Set make
      *
-     * @param \AutoBundle\Entity\Car $car
+     * @param Make $make
      *
-     * @return Body
+     * @return Model
      */
-    public function addCar(\AutoBundle\Entity\Car $car)
+    public function setMake($make)
     {
-        $this->cars[] = $car;
+        $this->make = $make;
 
         return $this;
     }
 
     /**
-     * Remove car
+     * Get make
      *
-     * @param \AutoBundle\Entity\Car $car
+     * @return Make
      */
-    public function removeCar(\AutoBundle\Entity\Car $car)
+    public function getMake()
     {
-        $this->cars->removeElement($car);
+        return $this->make;
     }
 
-    /**
-     * Get cars
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCars()
+    public function __toString()
     {
-        return $this->cars;
+        return $this->getName();
     }
 }
+

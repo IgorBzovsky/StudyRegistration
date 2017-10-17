@@ -7,3 +7,41 @@
 .button-alias{
     margin-left: 1em;
 }
+
+.advert-block{
+    position: relative;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 5px 10px;
+}
+.inactive{
+    opacity: 0.7;
+}
+.advert-title{
+    font-weight: bold;
+}
+.advert-heading{
+    color: #1b6d85;
+}
+.advert-price{
+    color: whitesmoke;
+    background-color: #ff3333;
+    position: absolute;
+    padding: 3px 10px;
+    border-radius: 3px;
+    top: 10px;
+    right: 10px;
+}
+
+.pagination-block{
+    margin: 50px 0;
+}
+
+.label-disabled{
+    background-color: #ff3333;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}

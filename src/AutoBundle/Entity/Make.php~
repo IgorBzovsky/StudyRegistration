@@ -8,13 +8,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Body
+ * Make
  *
  * @UniqueEntity("name")
- * @ORM\Table(name="body")
- * @ORM\Entity(repositoryClass="AutoBundle\Repository\BodyRepository")
+ * @ORM\Table(name="make")
+ * @ORM\Entity(repositoryClass="AutoBundle\Repository\MakeRepository")
  */
-class Body
+class Make
 {
     /**
      * @var int
@@ -34,13 +34,21 @@ class Body
     private $name;
 
     /**
+     * @var ArrayCollection|Model
+     *
+     * @ORM\OneToMany(targetEntity="Model", mappedBy="make")
+     */
+    private $models;
+
+    /**
      * @var ArrayCollection|Car
      *
-     * @ORM\OneToMany(targetEntity="Car", mappedBy="body")
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="make")
      */
     private $cars;
 
     public function __construct() {
+        $this->models = new ArrayCollection();
         $this->cars = new ArrayCollection();
     }
 
@@ -59,7 +67,7 @@ class Body
      *
      * @param string $name
      *
-     * @return Body
+     * @return Make
      */
     public function setName($name)
     {
@@ -82,38 +90,5 @@ class Body
     {
         return $this->getName();
     }
-
-    /**
-     * Add car
-     *
-     * @param \AutoBundle\Entity\Car $car
-     *
-     * @return Body
-     */
-    public function addCar(\AutoBundle\Entity\Car $car)
-    {
-        $this->cars[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \AutoBundle\Entity\Car $car
-     */
-    public function removeCar(\AutoBundle\Entity\Car $car)
-    {
-        $this->cars->removeElement($car);
-    }
-
-    /**
-     * Get cars
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCars()
-    {
-        return $this->cars;
-    }
 }
+

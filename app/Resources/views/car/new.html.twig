@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="col-md-4">
-        <h1>Create advert</h1>
+        <h1 class="page-header">Create advert</h1>
         <div class="form-panel">
             <a href="{{ path('car_index') }}" class="btn btn-default">
                 <i class="glyphicon glyphicon-arrow-left"></i>
@@ -14,7 +14,8 @@
         </div>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-            <button type="submit" class="btn btn-primary">Create</button>
+        {{ form_widget(form.make, { 'attr': {'class': 'js-make'} }) }}
+            <button type="submit" class="btn btn-primary" formnovalidate>Create</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
@@ -31,6 +32,24 @@
                 startDate: '-30y',
                 autoclose: true
             });
+
+            populateDropdown();
+            $(".js-make").change(function() {
+                populateDropdown();
+            });
+
+            function populateDropdown() {
+                var id = $(".js-make").children(":selected").attr("value");
+                $.getJSON('/getmodels/'+id, function(data){
+                    $(".js-model").html("");
+                    $.each(data, function(i, value){
+                        var opt = $('<option/>');
+                        opt.val(value.id);
+                        opt.text(value.name);
+                        $(".js-model").append(opt);
+                    });
+                });
+            }
         });
     </script>
 {% endblock %}

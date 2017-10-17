@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+{% endblock %}
 {% block body %}
     <div class="col-md-4">
-        <h1>Edit Advert</h1>
+        <h1 class="page-header">Edit Advert</h1>
         <div class="form-panel">
             <a href="{{ path('user_car_index') }}" class="btn btn-default">
                 <i class="glyphicon glyphicon-arrow-left"></i>
@@ -10,7 +13,7 @@
         </div>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
         {{ form_end(edit_form) }}
     </div>
 {% endblock %}
@@ -27,6 +30,23 @@
                 startDate: '-30y',
                 autoclose: true
             });
+            populateDropdown();
+            $(".js-make").change(function() {
+                populateDropdown();
+            });
+
+            function populateDropdown() {
+                var id = $(".js-make").children(":selected").attr("value");
+                $.getJSON('/getmodels/'+id, function(data){
+                    $(".js-model").html("");
+                    $.each(data, function(i, value){
+                        var opt = $('<option/>');
+                        opt.val(value.id);
+                        opt.text(value.name);
+                        $(".js-model").append(opt);
+                    });
+                });
+            }
         });
     </script>
 {% endblock %}

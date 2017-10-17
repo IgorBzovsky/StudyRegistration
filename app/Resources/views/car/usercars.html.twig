@@ -1,14 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>My Adverts</h1>
-    {% for car in cars %}
-        <div>
-            <h3>{{ car.make }}</h3>
-            <p>{{ car.model }}</p>
-            <p>{{ car.body }}</p>
-            <p>{% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
-            <p><a href="{{ path('car_detailed', { 'id': car.id }) }}">Show details</a></p>
+    <h1 class="page-header">My Adverts</h1>
+    {% for row in cars|batch(3) %}
+        <div class="row">
+            {% for car in row %}
+                <div class="col-md-4">
+                    <div class="advert-block">
+                        <h4 class="advert-heading">{{ car.make }} {{ car.model }}</h4>
+                        {% if car.isActive == false %}
+                            <p class="label-disabled">Not active</p>
+                        {% endif %}
+                        <p><span class="advert-title">Body:</span> {{ car.body }}</p>
+                        <p><span class="advert-title">Year:</span> {% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
+                        {% if car.description|length > 0 %}
+                            <p><span class="advert-title">Description:</span> {{ car.description|truncate(100, true) }}</p>
+                        {% endif %}
+                        <p><a href="{{ path('car_detailed', { 'id': car.id }) }}" class="btn btn-info">Show details</a></p>
+                        <div class="advert-price">$ {{ car.price|number_format(2) }}</div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     {% endfor %}
 {% endblock %}
+

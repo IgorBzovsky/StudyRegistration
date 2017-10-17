@@ -3,6 +3,7 @@
 namespace AutoBundle\Controller;
 
 use AutoBundle\Entity\Car;
+use AutoBundle\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -18,17 +19,27 @@ class CarController extends Controller
     /**
      * Lists all car entities.
      *
-     * @Route("/", name="car_index")
+     * @Route("/{page}", name="car_index")
+     * @param integer $page
      * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction($page = 1)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $cars = $em->getRepository('AutoBundle:Car')->findAll();
-
+        /**
+         * @var CarRepository
+         */
+        $carsRepository = $em->getRepository('AutoBundle:Car');
+        $cars = $carsRepository->getAllCars($page);
+        $limit = 6;
+        $maxPages = ceil($cars->count() / $limit);
+        $thisPage = $page;
         return $this->render('car/index.html.twig', array(
             'cars' => $cars,
+            'maxPages' => $maxPages,
+            'thisPage' => $thisPage
         ));
     }
 
@@ -58,7 +69,9 @@ class CarController extends Controller
     public function newAction(Request $request)
     {
         $car = new Car();
-        $form = $this->createForm('AutoBundle\Form\CarType', $car);
+        $em = $this->getDoctrine()->getManager();
+        $makes = $em->getRepository('AutoBundle:Make')->findAll();
+        $form = $this->createForm('AutoBundle\Form\CarType', $car, array('makes' => $makes));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,7 +79,6 @@ class CarController extends Controller
             $car->setCreatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
             $car->setUpdatedAt(new \DateTime(null, new \DateTimeZone("UTC")));
             $car->setCreatedBy($this->getUser());
-            $em = $this->getDoctrine()->getManager();
             $em->persist($car);
             $em->flush();
 
@@ -82,7 +94,7 @@ class CarController extends Controller
     /**
      * Finds and displays a car entity.
      *
-     * @Route("car/{id}", name="car_show")
+     * @Route("details/{id}", name="car_show")
      * @Method("GET")
      */
     public function showAction(Car $car)
@@ -153,7 +165,7 @@ class CarController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('car_index');
+        return $this->redirectToRoute('user_car_index');
     }
 
     /**

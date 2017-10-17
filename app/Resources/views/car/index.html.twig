@@ -1,14 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Auto Market Adverts</h1>
-    {% for car in cars %}
-        <div>
-            <h3>{{ car.make }}</h3>
-            <p>{{ car.model }}</p>
-            <p>{{ car.body }}</p>
-            <p>{% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
-            <p><a href="{{ path('car_show', { 'id': car.id }) }}">Show details</a></p>
+    <h1 class="page-header">Auto Market Adverts</h1>
+    {% for row in cars|batch(3) %}
+        <div class="row">
+            {% for car in row %}
+                <div class="col-md-4">
+                    <div class="advert-block {% if car.isActive == false %}inactive{% endif %}">
+                        <h4 class="advert-heading">{{ car.make }} {{ car.model }}</h4>
+                        <p><span class="advert-title">Body:</span> {{ car.body }}</p>
+                        <p><span class="advert-title">Year:</span> {% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
+                        {% if car.description|length > 0 %}
+                            <p><span class="advert-title">Description:</span> {{ car.description|truncate(100, true) }}</p>
+                        {% endif %}
+                        <p><a href="{{ path('car_show', { 'id': car.id }) }}" class="btn btn-info"
+                              {% if car.isActive == false %}disabled="disabled"{% endif %}>Show details</a></p>
+                        <div class="advert-price">$ {{ car.price|number_format(2) }}</div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     {% endfor %}
+    {% if maxPages > 1 %}
+        <ul class="pagination pagination-sm pull-right pagination-block">
+            {# `«` arrow  #}
+            <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                <a href="{{ path('car_index', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+            </li>
+
+            {# Render each page number #}
+            {% for i in 1..maxPages %}
+                <li {{ thisPage == i ? 'class="active"' }}>
+                    <a href="{{ path('car_index', {page: i}) }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {# `»` arrow #}
+            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
+                <a href="{{ path('car_index', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

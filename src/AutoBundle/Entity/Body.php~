@@ -82,38 +82,5 @@ class Body
     {
         return $this->getName();
     }
-
-    /**
-     * Add car
-     *
-     * @param \AutoBundle\Entity\Car $car
-     *
-     * @return Body
-     */
-    public function addCar(\AutoBundle\Entity\Car $car)
-    {
-        $this->cars[] = $car;
-
-        return $this;
-    }
-
-    /**
-     * Remove car
-     *
-     * @param \AutoBundle\Entity\Car $car
-     */
-    public function removeCar(\AutoBundle\Entity\Car $car)
-    {
-        $this->cars->removeElement($car);
-    }
-
-    /**
-     * Get cars
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCars()
-    {
-        return $this->cars;
-    }
 }
+

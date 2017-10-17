@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="col-md-4">
-        <h1>Edit Body</h1>
+        <h1 class="page-header">Edit Body</h1>
         <div class="form-panel">
             <a href="{{ path('body_index') }}" class="btn btn-default">
                 <i class="glyphicon glyphicon-arrow-left"></i>
@@ -10,7 +10,7 @@
         </div>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
         {{ form_end(edit_form) }}
     </div>
 {% endblock %}
