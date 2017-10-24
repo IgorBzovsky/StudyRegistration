@@ -2,6 +2,7 @@
 
 namespace AutoBundle\Form;
 
+use Comur\ImageBundle\Form\Type\CroppableImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -18,6 +19,7 @@ class CarType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $car = $builder->getForm()->getData();
         //$builder->add('year')->add('isActive')->add('createdAt')->add('updatedAt')->add('make')->add('model')->add('body')->add('createdBy');
         $builder->add('year', \Symfony\Component\Form\Extension\Core\Type\DateType::class,
             [
@@ -34,6 +36,33 @@ class CarType extends AbstractType
             ])->add('body', EntityType::class, [
                 'class' => 'AutoBundle:Body'
             ])->add('isActive')
+              ->add('image', CroppableImageType::class, array(
+                  'uploadConfig' => array(
+                      'uploadRoute' => 'comur_api_upload',
+                      'uploadUrl' => $car->getUploadRootDir(),
+                      'webDir' => $car->getUploadDir(),
+                      'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',
+                      'libraryDir' => null,
+                      'libraryRoute' => 'comur_api_image_library',
+                      'showLibrary' => false,
+                      'saveOriginal' => 'originalImage',
+                      'generateFilename' => true
+                  ),
+                  'cropConfig' => array(
+                      'minWidth' => 200,
+                      'minHeight' => 200,
+                      'aspectRatio' => true,
+                      'cropRoute' => 'comur_api_crop',
+                      'forceResize' => false,
+                      'thumbs' => array(
+                          array(
+                              'maxWidth' => 200,
+                              'maxHeight' => 200,
+                              'useAsFieldImage' => true
+                          )
+                      )
+                  )
+              ))
               ->add('price', MoneyType::class, array(
                 'currency' => 'USD'
             ))->add('description', TextareaType::class,

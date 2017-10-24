@@ -11,6 +11,9 @@
         {% endblock %}
     </head>
     <body>
+    <script src={{asset('vendor/jquery/jquery-3.2.1.min.js')}}></script>
+    <script src={{asset('vendor/bootstrap/js/bootstrap.min.js')}}></script>
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -66,8 +69,8 @@
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}
-            <script src={{asset('vendor/jquery/jquery-3.2.1.min.js')}}></script>
-            <script src={{asset('vendor/bootstrap/js/bootstrap.min.js')}}></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% endblock %}
     </body>
 </html>

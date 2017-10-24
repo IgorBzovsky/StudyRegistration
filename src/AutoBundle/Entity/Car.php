@@ -100,6 +100,16 @@ class Car
     private $description;
 
     /**
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $originalImage;
+
+    /**
      * Get id
      *
      * @return int
@@ -302,7 +312,7 @@ class Car
     }
 
     /**
-     * Set name
+     * Set description
      *
      * @param string $description
      *
@@ -347,5 +357,75 @@ class Car
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Car
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set originalImage
+     *
+     * @param string $originalImage
+     *
+     * @return Car
+     */
+    public function setOriginalImage($originalImage)
+    {
+        $this->image = $originalImage;
+
+        return $this;
+    }
+
+    /**
+     * Get originalImage
+     *
+     * @return string
+     */
+    public function getOriginalImage()
+    {
+        return $this->originalImage;
+    }
+
+    public function getUploadRootDir()
+    {
+        // absolute path to your directory where images must be saved
+        return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? str_replace('\\', '/', __DIR__.'\\..\\..\\..\\web\\'.$this->getUploadDir()) : __DIR__.'/../../../../../web/'.$this->getUploadDir();
+
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/cars';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : '/'.$this->getUploadDir().'/'.$this->image;
     }
 }
