@@ -49,14 +49,19 @@ class CarType extends AbstractType
                       'generateFilename' => true
                   ),
                   'cropConfig' => array(
-                      'minWidth' => 200,
+                      'minWidth' => 240,
                       'minHeight' => 200,
                       'aspectRatio' => true,
                       'cropRoute' => 'comur_api_crop',
                       'forceResize' => false,
                       'thumbs' => array(
                           array(
-                              'maxWidth' => 200,
+                              'maxWidth' => 180,
+                              'maxHeight' => 150,
+                              'useAsFieldImage' => true
+                          ),
+                          array(
+                              'maxWidth' => 240,
                               'maxHeight' => 200,
                               'useAsFieldImage' => true
                           )

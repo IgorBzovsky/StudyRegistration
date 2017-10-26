@@ -40,6 +40,15 @@ body{
     right: 10px;
 }
 
+.advert-image{
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+.detailed-image{
+    margin-bottom: 2em;
+}
+
 .pagination-block{
     margin: 50px 0;
 }

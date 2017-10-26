@@ -8,14 +8,20 @@
                 <div class="col-md-4">
                     <div class="advert-block {% if car.isActive == false %}inactive{% endif %}">
                         <h4 class="advert-heading">{{ car.make }} {{ car.model }}</h4>
-                        <p><span class="advert-title">Body:</span> {{ car.body }}</p>
-                        <p><span class="advert-title">Year:</span> {% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><span class="advert-title">Body:</span> {{ car.body }}</p>
+                                <p><span class="advert-title">Year:</span> {% if car.year %}{{ car.year|date('Y') }}{% endif %}</p>
+                            </div>
+                            <div class="col-xs-8 advert-image"><img src="/uploads/cars/{{ car.image|thumb(180, 150) }}"></div>
+                        </div>
                         {% if car.description|length > 0 %}
                             <p><span class="advert-title">Description:</span> {{ car.description|truncate(100, true) }}</p>
                         {% endif %}
                         <p><a href="{{ path('car_show', { 'id': car.id }) }}" class="btn btn-info"
                               {% if car.isActive == false %}disabled="disabled"{% endif %}>Show details</a></p>
                         <div class="price red">$ {{ car.price|number_format(2) }}</div>
+
                     </div>
                 </div>
             {% endfor %}
